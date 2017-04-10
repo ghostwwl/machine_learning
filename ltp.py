@@ -8,7 +8,6 @@
 #   Note    : 测试哈工大pyltp
 #********************************
 
-#哈工大ltp 语义依存标识等 测试
 
 import os
 import logging
@@ -16,6 +15,14 @@ import pyltp
 from timeit import default_timer
 
 logging.basicConfig(format='%(levelname)-8s %(asctime)s] %(message)s', level=logging.INFO)
+
+#NOTSET < DEBUG < INFO < WARNING < ERROR < CRITICAL
+
+#logging.basicConfig(level=logging.DEBUG,  
+                    #format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',  
+                    #datefmt='%a, %d %b %Y %H:%M:%S',  
+                    #filename='/tmp/test.log',  
+                    #filemode='w') 
 
 class Ltp(object):
     def __init__(self):
@@ -180,6 +187,12 @@ class Ltp(object):
             if x is not None:
                 x.release()
             del x
+            
+    # 分句
+    def do_split_sentence(self, intxt):
+        sentences =  pyltp.SentenceSplitter.split(intxt)
+        return list(sentences)
+        
         
     # 分词
     def do_seg(self, intxt):
@@ -187,6 +200,8 @@ class Ltp(object):
             self.segmentor = pyltp.Segmentor()
             if self.debug:
                 load_start = default_timer()
+            # 这里可以自定义词典的 外部词典本身是一个文本文件（plain text），每行指定一个词，编码同样须为 UTF-8    
+            #self.segmentor.load_with_lexicon('模型地址, '用户字典') # 加载模型
             self.segmentor.load(os.path.join(self.model_dir, 'cws.model'))
             if self.debug:
                 load_use = default_timer() - load_start
@@ -270,10 +285,15 @@ class Ltp(object):
             
         
         
-    
+
 
 if __name__ == '__main__':
     T = Ltp()
+    
+    #for i in T.do_split_sentence('''据英国《卫报》报道，谷歌日前遭到美国劳工部（DoL）起诉，因该公司向女性员工支付的薪酬常常低于男性员工。上周五由在一名联邦行政法法官主持的听证会上，美国劳工部指出，他们发现“几乎整个谷歌存在系统性薪酬不公问题”。美国劳工部从2015年起指出谷歌存在薪酬不公问题，并曾要求该公司公布其他记录来协助调查。'''):
+        #print i
+        #print '-'*20 
+    
     intxt = ['元芳你怎么看？我就趴窗口上看呗！',
         '在很多人眼中我就是神!',
         '孩子们你要什么样的生活?',
