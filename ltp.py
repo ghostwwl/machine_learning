@@ -279,16 +279,21 @@ class Ltp(object):
 if __name__ == '__main__':
     T = Ltp()
     
+
     #for i in T.do_split_sentence('''据英国《卫报》报道，谷歌日前遭到美国劳工部（DoL）起诉，因该公司向女性员工支付的薪酬常常低于男性员工。上周五由在一名联邦行政法法官主持的听证会上，美国劳工部指出，他们发现“几乎整个谷歌存在系统性薪酬不公问题”。美国劳工部从2015年起指出谷歌存在薪酬不公问题，并曾要求该公司公布其他记录来协助调查。'''):
         #print i
         #print '-'*20 
     
     intxt = ['元芳你怎么看？我就趴窗口上看呗！',
+        '你不是一个好程序员?',
         '在很多人眼中我就是神!',
+        '你要什么样的生活?',
         '孩子们你要什么样的生活?',
         '对于识别器来说知道一个词的正确发音是非常重要的',
         '2007年5月1日是个好日子',
         '王辉, 中国美术家协会会员。1980年生于湖北。2003年毕业于湖北美术学院, 中国画专业, 获得学士学位。',
+        'The golden gate bridge is located in San Francisco',
+        '据英国《卫报》报道，谷歌日前遭到美国劳工部（DoL）起诉，因该公司向女性员工支付的薪酬常常低于男性员工。上周五由在一名联邦行政法法官主持的听证会上，美国劳工部指出，他们发现“几乎整个谷歌存在系统性薪酬不公问题”。美国劳工部从2015年起指出谷歌存在薪酬不公问题，并曾要求该公司公布其他记录来协助调查。',
     ]
     
     for x in intxt:
@@ -299,10 +304,10 @@ if __name__ == '__main__':
         roles = T.do_rolelabel(words, postags, netags, arcs)
         
         T.loger.info("intxt: %s" % x)
-        T.loger.info(" ".join('%d:%s/%s[%d:%s]' % (x[0], x[1], x[2], x[3].head, x[3].relation) for x in zip(range(1, len(postags)+1), words, postags, arcs)))
+        T.loger.info(" ".join('%d:%s/%s[%d:%s]' % (x[0], x[1], x[2], x[3].head, x[3].relation) for x in zip(xrange(len(postags)), words, postags, arcs)))
 
         result = []
-        for x in zip(xrange(1, len(postags)+1), words, postags, arcs):
+        for x in zip(xrange(len(postags)), words, postags, arcs):
             result.append({'inx':x[0], 'words':x[1], 'pos':x[2], 'parent':x[3].head, 'relation':x[3].relation})
         
         # 角色标注
@@ -312,7 +317,7 @@ if __name__ == '__main__':
                 for i in xrange(arg.range.start, arg.range.end + 1):
                     w.append(result[i]['words'])
                 
-                r = '%s(%d, %d): %s' % (arg.name, arg.range.start, arg.range.end, ' '.join(w))
+                r = '%s[%s](%d, %d): %s' % (arg.name, T.SRL_LABEL[arg.name]['description'], arg.range.start, arg.range.end, ' '.join(w))
                 T.loger.info(r)
             
             print role.index, " ".join(['%s:(%d,%d)'%(arg.name, arg.range.start, arg.range.end) for arg in role.arguments])
@@ -320,5 +325,4 @@ if __name__ == '__main__':
         T.loger.info('-'*60)
         
         
-        
-        
+
