@@ -273,18 +273,7 @@ class Ltp(object):
         return roles
     
     
-    def process_result(self, intxt):
-        words, postags = T.do_pos(intxt)
-        arcs = T.do_parers(words, postags)
-        netags = T.do_entity(words, postags)
-        roles = T.do_rolelabel(words, postags, netags, arcs)
-        
-        result = {'words':{}, }
-        for x in zip(xrange(1, len(postags)+1), words, postags, arcs):
-            result.words[x[0]] = {'inx':x[0], 'words':x[1], 'pos':x[2], 'parent':x[3].head, 'relation':x[3].relation}
-            
-        
-        
+ 
 
 
 if __name__ == '__main__':
