@@ -179,7 +179,8 @@ class Ltp(object):
             "CRD" : {'description' : "coordinated arguments ( 并列参数 )"} ,
             "PRD" : {'description' : "predicate ( 谓语动词 )"} ,
             "PSR" : {'description' : "possessor ( 持有者 )"} ,
-            "PSE" : {'description' : "possessee ( 被持有 )" }
+            "PSE" : {'description' : "possessee ( 被持有 )" } ,
+            "DIS" : {'description' : "..." },
         }
         
     def __del__(self):
