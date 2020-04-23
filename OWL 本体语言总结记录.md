@@ -217,23 +217,21 @@ OWL 是一门供处理 web 信息的语言, 于 2004 年 2 月成为一项 W3C �
     - https://www.w3.org/TR/rdf-schema/
     - https://www.runoob.com/rdf/rdf-reference.html
 - OWL / OWL2
- 
- 
-## 什么是 OWL？
-- OWL 指的是 web 本体语言
-- OWL 构建在 RDF 的顶端之上
-- OWL 用于处理 web 上的信息
-- OWL 被设计为供计算机进行解释
-- OWL 不是被设计为供人类进行阅读的
-- OWL 由 XML 来编写
-- OWL 拥有三种子语言
-    - OWL Lite
-    - OWL DL (包含 OWL Lite)
-    - OWL Full (包含 OWL DL)
-- OWL 是一项 web 标准
+    - OWL 指的是 web 本体语言
+    - OWL 构建在 RDF 的顶端之上
+    - OWL 用于处理 web 上的信息
+    - OWL 被设计为供计算机进行解释
+    - OWL 不是被设计为供人类进行阅读的
+    - OWL 由 XML 来编写
+    - OWL 拥有三种子语言
+        - OWL Lite
+        - OWL DL (包含 OWL Lite)
+        - OWL Full (包含 OWL DL)
+    - OWL 是一项 web 标准
     - https://www.w3.org/OWL/
     - https://www.w3.org/TR/owl-ref/
-
+    - https://www.w3.org/TR/2004/REC-owl-guide-20040210/
+ 
 
 ## OWL 基本知识
 
@@ -351,7 +349,7 @@ owl:onProperty 元素指出了受限制的属性。
 
 
 ### OWL使用XML Schema内嵌数据类型中的大部分 
-
+   
 - 下列数据类型是推荐在OWL中使用
     - xsd:string
     - xsd:normalizedString
@@ -389,6 +387,8 @@ owl:onProperty 元素指出了受限制的属性。
     - xsd:Name
     - xsd:NCName
 
+- 以下列出的数据类型，连同 rdfs:Literal 构成了OWL的内嵌数据类型
+    - 所有的OWL推理机都应支持 xsd:integer 和 xsd:string 数据类型
 
 
 
