@@ -5,11 +5,11 @@
 
 OWL 是一门供处理 web 信息的语言, 于 2004 年 2 月成为一项 W3C 的推荐标准
 
- - XML
+- XML
     - 不知道这个你就不是好的 IT 工人
     - 弱弱的来句 `<![CDATA["不知cdata的肯定没处理过中文xml"]]>`
     - https://www.w3.org/XML/
- - RDF
+- RDF
     - Resource Description Framework
     - 资源描述框架，本质是一个数据模型（Data Model）, http://www.w3.org/RDF/
     - RDF形式为SPO三元组，也称为一条语句（statement），知识图谱中我们也称其为一条知识
@@ -30,27 +30,13 @@ OWL 是一门供处理 web 信息的语言, 于 2004 年 2 月成为一项 W3C �
                         <rdfs:subClassOf rdf:resource="http://schema.jd.com/ontologies/Intangible"/>
                         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
                       </rdf:Description>
-                      <rdf:Description rdf:nodeID="N72957783ad8543ecaf879f81de449f66">
-                        <owl:onProperty rdf:resource="http://schema.jd.com/ontologies/is_concept"/>
-                        <owl:someValuesFrom rdf:resource="http://schema.jd.com/ontologies/ConceptProduct"/>
-                        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-                      </rdf:Description>
+                   
                       <rdf:Description rdf:about="http://schema.jd.com/ontologies/sku_used_by_object">
                         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
                         <rdfs:domain rdf:resource="http://schema.jd.com/ontologies/SKU"/>
                         <rdfs:subPropertyOf rdf:resource="http://schema.jd.com/ontologies/sku_to_attribute"/>
                         <rdfs:range rdf:resource="http://schema.jd.com/ontologies/Thing"/>
                         <rdfs:comment>适用对象</rdfs:comment>
-                      </rdf:Description>
-                      <rdf:Description rdf:nodeID="Ne066a7e718464eaf996951c7a3055829">
-                        <owl:onProperty rdf:resource="http://schema.jd.com/ontologies/is_accessory_product"/>
-                        <owl:someValuesFrom rdf:resource="http://schema.jd.com/ontologies/Product"/>
-                        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-                      </rdf:Description>
-                      <rdf:Description rdf:nodeID="Nbac471e4192441b0be1bcf0e2fc73578">
-                        <owl:onProperty rdf:resource="http://schema.jd.com/ontologies/sku_has_design"/>
-                        <owl:someValuesFrom rdf:resource="http://schema.jd.com/ontologies/Design"/>
-                        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
                       </rdf:Description>
                       <rdf:Description rdf:about="http://schema.jd.com/ontologies/Function">
                         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
@@ -62,11 +48,6 @@ OWL 是一门供处理 web 信息的语言, 于 2004 年 2 月成为一项 W3C �
                         <rdfs:subClassOf rdf:resource="http://schema.jd.com/ontologies/Thing"/>
                         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
                         <rdfs:comment>Interested Point</rdfs:comment>
-                      </rdf:Description>
-                      <rdf:Description rdf:nodeID="N27dd61938f434ec0978691d2977a186d">
-                        <owl:someValuesFrom rdf:resource="http://schema.jd.com/ontologies/Function"/>
-                        <owl:onProperty rdf:resource="http://schema.jd.com/ontologies/entity_has_function"/>
-                        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
                       </rdf:Description>
                       <rdf:Description rdf:about="http://schema.jd.com/ontologies/sku_used_in_scene">
                         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -229,13 +210,13 @@ OWL 是一门供处理 web 信息的语言, 于 2004 年 2 月成为一项 W3C �
                   ]
                 ```
         - 现在可能还有 csv 撒的 只要能表示三元组就行呵
- - RDFS
+- RDFS
     - Resource Description Framework Schema
     - 轻量级的模式语言
     - RDFS/OWL序列化方式和RDF一样，其表现形式上，它们就是RDF
     - https://www.w3.org/TR/rdf-schema/
     - https://www.runoob.com/rdf/rdf-reference.html
- - OWL / OWL2
+- OWL / OWL2
  
  
 ## 什么是 OWL？
@@ -347,23 +328,26 @@ owl:onProperty 元素指出了受限制的属性。
 
 #### 属性特性：
 1. owl:TransitiveProperty 传递属性
-    > 如果一个属性P被声明为传递属性，那么对于任意的x,y和z： P(x,y)与P(y,z) 蕴含 P(x,z)；
     - 定义某属性具有传递性质
+    - 如果一个属性P被声明为传递属性，那么对于任意的x,y和z： P(x,y)与P(y,z) 蕴含 P(x,z)；
     - 例:  x <:isPartOf> y  and y <:isPartOf> z  那么 x <:isPartOf> z
 2. owl:SymmetricProperty
-    > 如果一个属性P被声明为对称属性，那么对于任意的x和y： P(x,y)当且仅当P(y,x)
     - 对称属性，描述定义某属性具有对称性
+    - 如果一个属性P被声明为对称属性，那么对于任意的x和y： P(x,y)当且仅当P(y,x)
     - 例: 如果 A 和 B 对称，若 A 认识 B，那么B肯定认识A
 3. owl:FunctionalProperty  
-    > 如果一个属性P被标记为函数型属性，那么对于所有的x  , y, 和z:  P(x,y)与P(x,z) 蕴含 y = z
     - 函数型属性，描述属性取值的唯一性
+    - 如果一个属性P被标记为函数型属性，那么对于所有的x  , y, 和z:  P(x,y)与P(x,z) 蕴含 y = z
     - 例: 定义人的 "父亲" 是唯一性的属性，如果 A 的父亲是 B，在另一个信息利存在 A 的父亲是 C，我们就可以得出 B == C
-4. owl:inverseOf 逆属性：
-    > 如果一个属性P1被标记为属性P2的逆, 那么对于所有的x 和 y:  P1(x,y) 当且仅当P2(y,x)。请注意owl:inverseOf的语法，它仅仅使用一个属性名作为参数。A 当且仅当B意思是 (A蕴含B)并且(B蕴含A).
-    - 定义某属性的相反关系
+4. owl:inverseOf
+    - 定义某属性的相反关系 逆属性
+    - 如果一个属性P1被标记为属性P2的逆, 那么对于所有的x 和 y:  P1(x,y) 当且仅当P2(y,x)。请注意owl:inverseOf的语法，它仅仅使用一个属性名作为参数。A 当且仅当B意思是 (A蕴含B)并且(B蕴含A).
     - 例: 定义 `父母` 的反关系是 `子女`， 那么 如果 A 是 B 的 `父母` 可以得出 B 是 A 的 `子女`
-5. owl:InverseFunctionalProperty－－反函数属性：
-    > 如果一个属性P被标记为反函数型的，那么对于所有的x, y和z:  P(y,x)与P(z,x) 蕴含 y = z。因为一个函数型属性的逆必定是反函数型的。反函数型属性的值域中的元素可以看成是在数据库意义上定义的一个唯一的键值。owl:InverseFunctional意味着属性的值域中的元素为定义域中的每个元素提供了一个唯一的标识。
+5. owl:InverseFunctionalProperty
+    - 反函数属性
+    - 表示两个不同的对象不能有相同的值
+    - 如果一个属性P被标记为反函数型的，那么对于所有的x, y和z:  P(y,x)与P(z,x) 蕴含 y = z。因为一个函数型属性的逆必定是反函数型的。反函数型属性的值域中的元素可以看成是在数据库意义上定义的一个唯一的键值。owl:InverseFunctional意味着属性的值域中的元素为定义域中的每个元素提供了一个唯一的标识。
+    - 例： 人的 `身份证号码` 是 反函数属性， 如果两个地方 多人身份证号码相同， 那么他们必定都是同一个人
 
 
 ### OWL使用XML Schema内嵌数据类型中的大部分 
