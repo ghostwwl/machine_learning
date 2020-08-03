@@ -42,10 +42,9 @@ __author__ = "ghostwwl"
 import os
 import faiss
 import numpy as np
-from lib.base import BaseObject, JdTraceback, logging
 
 
-class BaseEngine(BaseObject):
+class BaseEngine(object):
     def save_index(self, index, index_save_file):
         return faiss.write_index(index, index_save_file)
 
