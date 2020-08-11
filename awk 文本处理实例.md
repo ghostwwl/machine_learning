@@ -193,3 +193,8 @@ shell 脚本如下
 > cat qp_pos.txt |tr -s  "[\'\(\)]+" " "|awk -F "," '{for(i=1;i<=NF;i++){if ($i !~ /[0-9]+/){print $i}}}'|awk '{c[$0]++}END{for (i in c) print i"\t" c[i]}'|sort -n -k 2 -r
 
 
+
+
+**如果您觉得本文结对您有帮助,通过微信打赏作者,金额随意!**
+
+![](https://github.com/ghostwwl/machine_learning/blob/master/wx_pay.jpg)
