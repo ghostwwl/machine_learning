@@ -77,3 +77,7 @@ for stat in top_stats[:10]:
     print(stat)
 
 ```
+
+**如果您觉得本总结对您有帮助,通过微信打赏作者,金额随意!**
+
+![](https://github.com/ghostwwl/machine_learning/blob/master/wx_pay.jpg)
