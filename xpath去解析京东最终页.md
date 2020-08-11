@@ -348,3 +348,9 @@ print tree.xpath('//div[@id="testid"]/h2/text() | //li[@data]/text()') #多个�
 >>当然也可以直接选取其属性的第二个值
 >>.xpath('div[contains(@class,"mp-privince-city")]')
 >>重点是class需要添加一个@符号
+
+
+
+**如果您觉得本文结对您有帮助,通过微信打赏作者,金额随意!**
+
+![](https://github.com/ghostwwl/machine_learning/blob/master/wx_pay.jpg)
