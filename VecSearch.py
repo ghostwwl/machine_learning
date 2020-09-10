@@ -5,7 +5,7 @@
 # ********************************
 #    FileName: VecSearch.py
 #    Author  : ghostwwl
-#    Email   : wule@jd.com
+#    Email   : ghostwwl@gmail.com
 #    Date    : 2019-7-15
 #    Note    : 基于向量的检索 图片 和 文本 实现
 # ********************************
