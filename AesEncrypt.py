@@ -5,8 +5,8 @@
 # ********************************
 #    FileName: AesEncrypt.py
 #    Author  : ghostwwl
-#    Email   : ghostwwl@qq.com
-#    Note    :
+#    Email   : ghostwwl@gmail.com
+#    Note    : AES-128/CBC/PKCS7
 # ********************************
 
 
