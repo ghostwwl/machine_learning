@@ -3,10 +3,10 @@
 
 
 # ********************************
-#    FileName: AesEncrypt.py
+#    FileName: encryption.py
 #    Author  : ghostwwl
 #    Email   : ghostwwl@gmail.com
-#    Note    : AES-128/CBC/PKCS7
+#    Note    :
 # ********************************
 
 
@@ -19,6 +19,7 @@ import base64
 # AES-128 --> 16
 # AES-192 --> 24
 # AES-256 --> 32
+
 
 class AesEncrypt(object):
     """
@@ -54,7 +55,7 @@ class AesEncrypt(object):
         padding_length = 16 - mod_num
         return text + chr(padding_length) * padding_length
 
-    def pkcs7uppadding(self, text):
+    def pkcs7unpadding(self, text):
         bytes_length = len(text.encode('utf-8'))
         mod_num = bytes_length % 16
         assert mod_num == 0
@@ -65,18 +66,20 @@ class AesEncrypt(object):
             return text[:-padding_len]
         return text
 
+
     def encrypt(self, text):
-        return base64.b64encode(AES.new(self.key, AES.MODE_CBC, self.iv)\
-                                .encrypt(self.pkcs7padding(text).encode('utf-8'))).decode('utf-8', 'ignore')
+        enc_str = AES.new(self.key, AES.MODE_CBC, self.iv).encrypt(self.pkcs7padding(text).encode('utf-8'))
+        return base64.b64encode(enc_str).decode('utf-8', 'ignore')
 
     def decrypt(self, content):
-        return self.pkcs7uppadding(AES.new(self.key, AES.MODE_CBC, self.iv)\
-                                   .decrypt(base64.b64decode(content)).decode("utf-8", 'ignore'))
+        dec_str = AES.new(self.key, AES.MODE_CBC, self.iv).decrypt(base64.b64decode(content)).decode("utf-8", 'ignore')
+        return self.pkcs7unpadding(dec_str)
 
 if __name__ == '__main__':
-    key = '我是key'
+    key = '123465'
     a = AesEncrypt(key)
-    e = a.encrypt('A0600^^华为手机*华为*苹果手机*手机5g*小米手机*手机自营*小米*oppo手机*vivo手机*苹果*oppo*vivo*荣耀*小米10*')
+    s = 'A0600^^华为手机*华为*苹果手机*手机5g*小米手机*手机自营*小米*oppo手机*vivo手机*苹果*oppo*vivo*荣耀*小米10*a'
+    e = a.encrypt(s)
     d = a.decrypt(e)
     print("encrypt:", e)
     print("decrypt:", d)
